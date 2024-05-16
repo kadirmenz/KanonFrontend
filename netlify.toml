@@ -5,3 +5,8 @@
 [build.environment]
   NODE_VERSION = "18.16.0"
   REACT_APP_API_BASE_URL = "https://kanongaming-backend2-96a4638a172b.herokuapp.com/api"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
