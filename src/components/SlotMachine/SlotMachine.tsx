@@ -24,7 +24,6 @@ const symbols = [lemon, cherry, apple, banana];
 const symbolNames = ['lemon', 'cherry', 'apple', 'banana'];
 
 const SlotMachine = () => {
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const location = useLocation();
   const game = location.state?.game;
   const [result, setResult] = useState<string[]>([
@@ -63,7 +62,7 @@ const SlotMachine = () => {
     setTimeout(async () => {
       clearInterval(intervalId);
       stopSlotMachineSound()
-      const res = await fetch(`${API_BASE_URL}/slot/spin`, {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/slot/spin`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${user.token}`,

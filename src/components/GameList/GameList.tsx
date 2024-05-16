@@ -16,7 +16,6 @@ import './GameList.css';
 import noImageFound from '../../assets/no-image.png'
 
 const GameList = () => {
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const dispatch = useDispatch();
   const games = useSelector((state: any) => state.games.games);
   const user = useSelector((state: any) => state.user);
@@ -26,7 +25,7 @@ const GameList = () => {
   useEffect(() => {
     const fetchGames = async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/games`, {
+        const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/games`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -44,7 +43,7 @@ const GameList = () => {
 
     const fetchFavorites = async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/users/favorites`, {
+        const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/favorites`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -72,7 +71,7 @@ const GameList = () => {
     try {
       const isFavorite = favoriteGameIds.includes(gameId);
       const method = isFavorite ? 'DELETE' : 'POST';
-      const res = await fetch(`${API_BASE_URL}/users/favorite/${gameId}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/favorite/${gameId}`, {
         method,
         headers: {
           Authorization: `Bearer ${user.token}`,

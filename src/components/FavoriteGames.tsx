@@ -14,7 +14,6 @@ import { Button } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const FavoriteGames = () => {
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     const user = useSelector((state: any) => state.user);
     const [favoriteGames, setFavoriteGames] = useState<any[]>([]);
     const navigate = useNavigate();
@@ -22,14 +21,14 @@ const FavoriteGames = () => {
     useEffect(() => {
         const fetchFavoriteGames = async () => {
         try {
-            const res = await fetch(`${API_BASE_URL}/users/favorites`, {
+            const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/favorites`, {
             headers: {
                 Authorization: `Bearer ${user.token}`,
             },
             });
             if (res.ok) {
             const favoriteGameIds = await res.json();
-            const allGamesRes = await fetch(`${API_BASE_URL}/games`, {
+            const allGamesRes = await fetch(`${process.env.REACT_APP_API_BASE_URL}/games`, {
                 headers: {
                 Authorization: `Bearer ${user.token}`,
                 },

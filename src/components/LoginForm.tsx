@@ -13,7 +13,6 @@ import '../index.css';
 import { Paper } from '@mui/material';
 
 const LoginForm = () => {
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -29,7 +28,7 @@ const LoginForm = () => {
         }
 
         try {
-        const res = await fetch(`${API_BASE_URL}/auth/login`, {
+        const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/login`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
