@@ -60,7 +60,6 @@ const SlotMachine = () => {
     }, 100);
 
     setTimeout(async () => {
-      clearInterval(intervalId);
       stopSlotMachineSound()
       const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/slot/spin`, {
         method: 'POST',
@@ -73,6 +72,7 @@ const SlotMachine = () => {
       const data = await res.json();
 
       if (res.ok) {
+        clearInterval(intervalId);
         setResult(data.result);
         const coinsWon = data.coins - user.coins + 1;
         setCoinsWon(coinsWon);
@@ -88,6 +88,7 @@ const SlotMachine = () => {
         }
 
         setTimeout(() => {
+          setResult(data.result);
           setShowConfetti(false);
           setMessage(null);
           stopWinSound();
