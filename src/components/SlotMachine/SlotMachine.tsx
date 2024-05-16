@@ -63,7 +63,6 @@ const SlotMachine = () => {
       clearInterval(intervalId);
       stopSlotMachineSound()
       const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/slot/spin`, {
-        mode: 'no-cors',
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${user.token}`,
