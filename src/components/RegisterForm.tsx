@@ -30,6 +30,7 @@ const RegisterForm = () => {
 
         try {
         const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/register`, {
+            mode: 'no-cors',
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',

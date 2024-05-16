@@ -26,6 +26,7 @@ const GameList = () => {
     const fetchGames = async () => {
       try {
         const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/games`, {
+          mode: 'no-cors',
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -44,6 +45,7 @@ const GameList = () => {
     const fetchFavorites = async () => {
       try {
         const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/favorites`, {
+          mode: 'no-cors',
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -72,6 +74,7 @@ const GameList = () => {
       const isFavorite = favoriteGameIds.includes(gameId);
       const method = isFavorite ? 'DELETE' : 'POST';
       const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/favorite/${gameId}`, {
+        mode: 'no-cors',
         method,
         headers: {
           Authorization: `Bearer ${user.token}`,

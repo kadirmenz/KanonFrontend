@@ -22,13 +22,15 @@ const FavoriteGames = () => {
         const fetchFavoriteGames = async () => {
         try {
             const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/users/favorites`, {
-            headers: {
-                Authorization: `Bearer ${user.token}`,
-            },
+                mode: 'no-cors',
+                headers: {
+                    Authorization: `Bearer ${user.token}`,
+                },
             });
             if (res.ok) {
             const favoriteGameIds = await res.json();
             const allGamesRes = await fetch(`${process.env.REACT_APP_API_BASE_URL}/games`, {
+                mode: 'no-cors',
                 headers: {
                 Authorization: `Bearer ${user.token}`,
                 },
